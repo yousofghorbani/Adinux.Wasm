@@ -1,0 +1,35 @@
+﻿
+<div class="contentMain">
+    <div class="HeaderMain">
+        <h2 class="headerTitle">Choose the service you need</h2>
+
+    </div>
+    <div class="FormeInfo">
+        <EditForm EditContext="_editContext" OnSubmit="HandleFormSubmit" class="space-y-6">
+            <DataAnnotationsValidator />
+            <div class="rowForm">
+                <InputText @bind-Value=UserIdentityForm.FirstName class="inputValidate" placeholder="Name" data-valid="empty" type="text"/>
+
+            </div>
+            <div class="rowForm">
+                <InputText @bind-Value=UserIdentityForm.Company class="inputValidate" placeholder="Company name" data-valid="empty" type="text"/>
+
+            </div>
+            <div class="rowForm">
+               <InputText @bind-Value=UserIdentityForm.Mobile class="inputValidate" placeholder="Mobile number" data-valid="mobile" type="text"/>
+@*               <input type="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" class="inputValidate" @bind=UserIdentityForm.Mobile placeholder="شماره موبایل" data-valid="mobile"/>
+*@            </div>
+            <div class="rowForm">
+                <InputText @bind-Value=UserIdentityForm.Email class="inputValidate" placeholder="Email" data-valid="email" type="text"/>
+
+            </div>
+            <div class="rowForm">
+                <button type="submit" class="btnforme BtnValidate">Select service<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+        </EditForm>
+    </div>
+
+</div>
+@*            <input type="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" @bind=UserIdentityForm.Mobile placeholder="09000000" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white text-end"  style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAmJJREFUWAntV7uKIkEUvbYGM4KID3wEIgjKRLLpKGLgFwiCfslGhkb7IbLgAzE1GhMxWxRRBEEwmEgDERWfW6fXuttq60a2wU6B1qlzb9U5fatsKROJVigUArvd7oeAyePx6Af3qGYymT7F2h8Wi+V7Pp+fmE7iv4Sw81GieusKIzNh4puCJzdaHIagCW1F4KSeQ4O4pPLoPb/3INBGBZ7avgz8fxWIxWIUCoX43Blegbe3NwoGg88zwMoncFUB8Yokj8dDdrv9MpfHVquV/H4/iVcpc1qgKAp5vV6y2WxaWhefreB0OimXy6kGkD0YDKhSqdB2u+XJqVSK4vE4QWS5XKrx0WjEcZ/PR9lslhwOh8p1Oh2q1Wp0OBw4RwvOKpBOp1kcSdivZPLvmxrjRCKhiiOOSmQyGXp5ecFQbRhLcRDRaJTe39//BHW+2cDr6ysFAoGrlEgkwpwWS1I7z+VykdvtliHuw+Ew40vABvb7Pf6hLuMk/rGY02ImBZC8dqv04lpOYjaw2WzUPZcB2WMPZet2u1cmZ7MZTSYTNWU+n9N4PJbp3GvXYPIE2ADG9Xqder2e+kTr9ZqazSa1222eA6FqtUoQwqHCuFgscgWQWC6XaTgcEiqKQ9poNOiegbNfwWq1olKppB6yW6cWVcDHbDarIuzuBBaLhWrqVvwy/6wCMnhLXMbR4wnvtX/F5VxdAzJoRH+2BUYItlotmk6nLGW4gX6/z+IAT9+CLwPPr8DprnZ2MIwaQBsV+DBKUEfnQ8EtFRdFneBDKWhCW8EVGbdUQfxESR6qKhaHBrSgCe3fbLTpPlS70M0AAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;"/>
+*@
+@*    <button type="submit" disabled=@_isBusy class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">بعدی</button>*@

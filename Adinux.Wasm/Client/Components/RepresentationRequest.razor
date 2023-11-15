@@ -1,0 +1,78 @@
+﻿@using Adinux.Wasm.Shared.Enums
+@using Adinux.Wasm.Shared.Extensions
+@using DNTPersianUtils.Core.IranCities
+
+<div class="contentMain">
+    <div class="HeaderMain">
+        <h2 class="headerTitle">Representation request</h2>
+        <button @onclick="(() => BackToSignUp.InvokeAsync(true))" class="btnback"><i class="fa fa-angle-left" aria-hidden="true"></i>Return to previous page</button>
+
+    </div>
+
+    <div class="FormeInfo">
+            <div class="itemBoxRadio">
+                @foreach (var representation in new[] { RepresentationServiceType.Sell, RepresentationServiceType.Service, RepresentationServiceType.Both })
+                {
+                    <label for="sale" class="methodSelect">
+                        <span>
+                            <input name="b" checked="@(selectedRepresentationServiceType == representation)"
+                               @onchange="@(() => { selectedRepresentationServiceType = representation; })" 
+                               type="radio">@representation.GetEnumDescription()
+                        </span>
+                    </label>
+
+                }
+            </div>
+            <div class="itemBoxRadio">
+                @foreach (var representation in new[] { RepresentationPersonType.RealCharacter, RepresentationPersonType.LegalPersonality })
+                {
+                    <label for="real" class="methodSelect">
+                        <span><input name="a" 
+                            checked="@(selectedRepresentationPersonType == representation)"
+                               @onchange="@(() => { selectedRepresentationPersonType = representation; })"
+                            type="radio" >@representation.GetEnumDescription()</span>
+                    </label>
+                    
+                }
+               
+            </div>
+            <div class="rowForm">
+                <select @bind="selectedpProvince" data-valid="empty" class=" inputValidate">
+                <option value="">Please select the province</option>
+                    @foreach (var province in Iran.Provinces)
+                    {
+                        <option value="@province.ProvinceName">@province.ProvinceName</option>
+
+                    }
+                </select>
+            </div>
+
+            <div class="rowForm">
+                <select @bind="selectedpCity" data-valid="empty" class=" inputValidate @(string.IsNullOrEmpty(selectedpProvince)? "disabled":"")">
+                <option value="">Please select the city</option>
+                    @if (!string.IsNullOrEmpty(selectedpProvince))
+                    {
+                        @foreach (var county in Iran.Provinces.Where(p => p.ProvinceName == selectedpProvince).First().Counties)
+                        {
+                            foreach (var district in county.Districts)
+                            {
+                                foreach (var city in district.Cities)
+                                {
+                                    <option value="@city.CityName">@city.CityName</option>
+                                }
+                            }
+
+                        }
+
+                    }
+                </select>
+            </div>
+
+            <div class="clearfix">
+            <button @onclick="(() => HandleRequestClicked())" disabled="@(string.IsNullOrEmpty(selectedpCity))" class="btnforme BtnValidate" data-toggle="modal" data-target="#myModal">Representation request<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+
+            </div>
+        
+    </div>
+
+</div>

@@ -1,0 +1,187 @@
+﻿@using Adinux.Wasm.Shared.Enums
+@using Adinux.Wasm.Shared.Extensions
+<div class="contentMain">
+    <div class="HeaderMain">
+        <h2 class="headerTitle">Choose the catalog you need</h2>
+        <button @onclick="(() => BackToSignUp.InvokeAsync(true))" class="btnback"><i class="fa fa-angle-left" aria-hidden="true"></i>Return to previous page</button>
+    </div>
+    <div class="">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            @foreach (var catalogue in catalogues)
+            {
+                <li @onclick="(() => selectedcCatalogueTab = catalogue.Category)"
+                class="nav-item @(selectedcCatalogueTab == catalogue.Category? "active":"")">
+                    <a class="nav-link @(selectedcCatalogueTab == catalogue.Category? "active in":"")" id="@catalogue.Category.Replace(" ","-")-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">
+                        @catalogue.Category
+                    </a>
+                </li>
+
+            }
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            @foreach (var catalogue1 in catalogues)
+            {
+                <div class="tab-pane fade @(selectedcCatalogueTab == catalogue1.Category? "active in": "")" id="@catalogue1.Category.Replace(" ","-")" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="container-box">
+                        @foreach (var catType in catalogue1.CatTypes)
+                        {
+                            <details>
+                                <summary>
+                                    @catType.Name
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </summary>
+                                <div class="details-info">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                @if (catType.Types.Any())
+                                                {
+                                                    @foreach (var type in catType.Types)
+                                                    {
+                                                        <div class="item-checkbox col-md-6">
+                                                            <span class="@(string.IsNullOrEmpty(type.Desc)? "hidden":"")">
+                                                                <i class="fa fa-info"></i>
+                                                                <div class="alert alert-success">
+                                                                    <strong>Description</strong><br>@type.Desc
+                                                                </div>
+                                                            </span>
+                                                            <label for="@type.Name" class="labelCheck">
+                                                                <input checked="@(selectedCatalogues.Any(s => s.Name ==type.Name)?"checked":null)" @onchange='(() => HandleOnCheckboxChange(type))' type="checkbox" id="@type.Name" class="regular-checkbox   ch-hidden">
+                                                                <label for="@type.Name" class="font-lable">
+                                                                </label>@type.Name
+                                                            </label>
+                                                        </div>
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                       <div class="item-checkbox col-md-6">
+                                                            <span class="@(string.IsNullOrEmpty(catType.Desc)? "hidden":"")">
+                                                                <i class="fa fa-info"></i>
+                                                                <div class="alert alert-success">
+                                                                    <strong>Description</strong><br>@catType.Desc
+                                                                </div>
+                                                            </span>
+                                                            <label for="@catType.Name" class="labelCheck">
+                                                                <input checked="@(selectedCatalogues.Any(s => s.Name ==catType.Name)?"checked":null)" @onchange='(() => HandleOnCheckboxChange(catType))' type="checkbox" id="@catType.Name" class="regular-checkbox   ch-hidden">
+                                                                <label for="@catType.Name" class="font-lable">
+                                                                </label>@catType.Name
+                                                            </label>
+                                                        </div>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        @if (!string.IsNullOrEmpty(catType.Recmonded))
+                                        {
+
+                                            <div class="col-md-7 catalog-top">
+                                                <div class="box-checkbox">
+                                                    <h4 class="font-bold">Suggested catalogs</h4>
+                                                    <div class="row">
+                                                        @foreach (var rec in catType.Recmonded.Split(","))
+                                                        {
+                                                            @*<div class="item-checkbox col-md-6">
+                                            <span>
+                                            <i class="fa fa-info"></i>
+                                            <div class="alert alert-success">
+                                            <strong>توضیحات</strong><br>@type.Desc
+                                            </div>
+                                            </span>
+                                            <label for="@type.Name" class="labelCheck">
+                                            <input @onchange='(() => HandleOnCheckboxChange(type))' type="checkbox" id="@type.Name" class="regular-checkbox   ch-hidden">
+                                            <label for="@type.Name" class="font-lable">
+                                            </label>@type.Name
+                                            </label>
+                                            </div>*@
+
+                                                        }
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </details>
+                        }
+
+
+                    </div>
+
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="row">
+
+        <div class="col-md-2 text-left top-send-by-btn cursor-pointer" style="padding-top:20px;z-index:20;">
+            <div class="">
+
+                <div>
+                    <button @onclick="(() => HandleCataloguesRequestClicked())" disabled="@(!selectedSendTypes.Any() || !selectedCatalogues.Any())" class="btnforme BtnValidate"> Send<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-5 top-send-by">
+            <p class="send-by">send by:</p>
+            <input id="tel" type="checkbox" class="disabled not-allowed" @onclick="(() => HandleSendType(SendType.Telegram))" checked="@(selectedSendTypes.Contains(SendType.Telegram)?"checked":null)">
+            <label for="tel" class="font-lable p-left disabled">@SendType.Telegram.GetEnumDescription()</label>
+            <input id="wt" type="checkbox" class="disabled not-allowed" @onclick="(() => HandleSendType(SendType.Whatsapp))" checked="@(selectedSendTypes.Contains(SendType.Whatsapp)?"checked":null)">
+            <label for="wt" class="font-lable p-left disabled">@SendType.Whatsapp.GetEnumDescription()</label>
+            <input id="email" type="checkbox" class="" @onclick="(() => HandleSendType(SendType.Email))" checked="@(selectedSendTypes.Contains(SendType.Email)?"checked":null)">
+            <label for="email" class="font-lable p-left">@SendType.Email.GetEnumDescription()</label>
+        </div>
+
+
+        <div class="col-md-5">
+            <h4 class="p-bottom @*p-top*@">Selected catalogs</h4>
+            <div class="">
+                @foreach (var item in selectedCatalogues)
+                {
+                    <a class="lable" @onclick="(() => selectedCatalogues.Remove(item))">
+                        @item.Name
+                        <i class="fa fa-close"></i>
+
+                    </a>
+                }
+
+
+            </div>
+            <div class="">
+                @* <a class="lable">
+                picv
+                <i class="fa fa-close"></i>
+
+                </a>
+                <a class="lable">
+                picv
+                <i class="fa fa-close"></i>
+
+                </a>
+                <a class="lable">
+                picv
+                <i class="fa fa-close"></i>
+
+                </a>
+                <a class="lable">
+                picv
+                <i class="fa fa-close"></i>
+
+                </a>*@
+            </div>
+        </div>
+
+    </div>
+</div>

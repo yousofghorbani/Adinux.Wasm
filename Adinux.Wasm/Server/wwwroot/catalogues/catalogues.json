@@ -1,0 +1,174 @@
+[
+    {
+        "category": "Control Valves",
+        "catTypes": [
+            {
+                "name": "PICV",
+                "desc": "hb",
+                "files": "",
+                "recmonded": "",
+                "types": [
+                  {
+                    "name": "VLX",
+                    "desc": "vb",
+                    "files": "Control Valve/PICV_VLX.pdf",
+                    "recmonded": ""
+                  },
+                  {
+                    "name": "EBV",
+                    "desc": "",
+                    "files": "Control Valve/PICV_EBV.pdf",
+                    "recmonded": ""
+                  }
+                ]
+            },
+            {
+                "name": "Butterfly",
+                "desc": "",
+                "files": "",
+                "recmonded": "",
+                "types": [
+                  {
+                    "name": "VFA",
+                    "desc": "",
+                    "files": "Control Valve/Butterlfy_VFA+MDA-MDL.pdf",
+                    "recmonded": ""
+                  }
+                ]
+            },
+            {
+                "name": "Globe",
+                "desc": "",
+                "files": "",
+                "recmonded": "",
+                "types": [
+                  {
+                    "name": "2F...",
+                    "desc": "",
+                    "files": "Control Valve/Globe_2F...pdf",
+                    "recmonded": ""
+                  },
+                  {
+                    "name": "3F...",
+                    "desc": "",
+                    "files": "Control Valve/Globe_2F...pdf",
+                    "recmonded": ""
+                  }
+                ]
+            },
+          {
+            "name": "Terminal units or Zone control",
+            "desc": "",
+            "files": "",
+            "recmonded": "",
+            "types": [
+              {
+                "name": "BRASS",
+                "desc": "",
+                "files": "Control Valve/FC_2Way_VSX.pdf,Control Valve/FC_3Way_VPx.pdf",
+                "recmonded": ""
+              },
+              {
+                "name": "PPSU",
+                "desc": "",
+                "files": "Control Valve/FC_2Way_VSX.pdf,Control Valve/FC_3Way_VPx.pdf",
+                "recmonded": ""
+              }
+            ]
+          }
+        ]
+    },
+  {
+    "category": "Sensors",
+    "catTypes": [
+      {
+        "name": "BD297",
+        "desc": "",
+        "files": "Sensor/BD297.pdf",
+        "recmonded": "",
+        "types": [
+
+        ]
+      },
+      {
+        "name": "Y106",
+        "desc": "",
+        "files": "Sensor/Y106.pdf",
+        "recmonded": "",
+        "types": [
+
+        ]
+      },
+      {
+        "name": "Y112",
+        "desc": "",
+        "files": "Sensor/Y112.pdf",
+        "recmonded": "",
+        "types": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Actuators",
+    "catTypes": [
+      {
+        "name": "MCA230",
+        "desc": "",
+        "files": "Act/MCA.pdf",
+        "recmonded": "",
+        "types": []
+      },
+      {
+        "name": "MDB",
+        "desc": "",
+        "files": "Act/MDB.pdf",
+        "recmonded": "",
+        "types": []
+      },
+      {
+        "name": "MVB",
+        "desc": "",
+        "files": "Act/MVB.pdf",
+        "recmonded": "",
+        "types": []
+      },
+      {
+        "name": "MVE",
+        "desc": "",
+        "files": "Act/MVE.pdf",
+        "recmonded": "",
+        "types": []
+      },
+      {
+        "name": "MVR",
+        "desc": "",
+        "files": "Act/MVR.pdf",
+        "recmonded": "",
+        "types": []
+      },
+      {
+        "name": "MVT",
+        "desc": "",
+        "files": "Act/MVT.pdf",
+        "recmonded": "",
+        "types": []
+      },
+      {
+        "name": "MVX",
+        "desc": "",
+        "files": "Act/MVX.pdf",
+        "recmonded": "",
+        "types": []
+      },
+      {
+        "name": "MVP",
+        "desc": "",
+        "files": "Act/MVP.pdf",
+        "recmonded": "",
+        "types": []
+      }
+    ]
+  }
+]

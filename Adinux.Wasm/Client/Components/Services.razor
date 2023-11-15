@@ -1,0 +1,59 @@
+﻿@using Adinux.Wasm.Client.Enums
+@using Adinux.Wasm.Shared.Extensions
+
+
+<div class="contentMain">
+    <div class="HeaderMain">
+        <h2 class="headerTitle">Choose the service you need</h2>
+        <button @onclick="(() => BackToSignUp.InvokeAsync(true))" class="btnback"><i class="fa fa-angle-left" aria-hidden="true"></i>Return to previous page</button>
+    </div>
+    <div class="itemRequest">
+        <div class="itemBox"
+             @onclick="(() => CurrentUserIdentityFormService.InvokeAsync(UserIdentityFormService.CatalogueRequest))">
+            <div>
+                <img src="images/pexels-kaboompics-com-5909 (1) 1.jpg">
+                <p>@UserIdentityFormService.CatalogueRequest.GetEnumDescription()</p>
+            </div>
+        </div>
+        <div class="itemBox"
+             @onclick="(() => CurrentUserIdentityFormService.InvokeAsync(UserIdentityFormService.RepresentationRequest))">
+            <div>
+                <img src="images/pexels-andrea-piacquadio-3760072 1.jpg">
+                <p>@UserIdentityFormService.RepresentationRequest.GetEnumDescription()</p>
+            </div>
+        </div>
+        <div class="itemBox"
+            @onclick="(() => CurrentUserIdentityFormService.InvokeAsync(UserIdentityFormService.PriceRequest))">
+            <div>
+                <img src="images/business-woman-hand-with-financial-charts-laptop-ta 1.jpg">
+                <p>@UserIdentityFormService.PriceRequest.GetEnumDescription()</p>
+            </div>
+        </div>
+        <div class="itemBox"
+            @onclick="(() => CurrentUserIdentityFormService.InvokeAsync(UserIdentityFormService.ResumeRequest))">
+            <div>
+                <img src="images/pexels-edmond-dantès-4344860 1.jpg">
+                <p>@UserIdentityFormService.ResumeRequest.GetEnumDescription()</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<label class="text-sm font-medium block text-rtl">@($"{CurrentUserIdentityForm.FirstName} عزیز لطفا گزینه مورد نظر خود را انتخاب کنید")</label>
+
+<div class="flex flex-col gap-2 justify-end mt-2">
+    <select @onchange='((e) => currentUserIdentityFormService = Enum.Parse<UserIdentityFormService>(e.Value.ToString()))'
+            class="text-rtl text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        @foreach (UserIdentityFormService value in Enum.GetValues(typeof(UserIdentityFormService)))
+        {
+            <option value="@value" selected="@(value==currentUserIdentityFormService)">@value.GetEnumDescription()</option>
+        }
+    </select>
+
+    @if(currentUserIdentityFormService == UserIdentityFormService.CatalogueRequest)
+    {
+        <CatalogueForm />
+    }
+
+</div>*@

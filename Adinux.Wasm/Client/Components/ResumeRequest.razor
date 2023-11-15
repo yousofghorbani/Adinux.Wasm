@@ -1,0 +1,33 @@
+﻿@using Adinux.Wasm.Shared.Enums
+@using Adinux.Wasm.Shared.Extensions
+<div class="contentMain">
+    <div class="HeaderMain">
+        <h2 class="headerTitle">Request resume/portfolio</h2>
+        <button @onclick="(() => BackToSignUp.InvokeAsync(true))" class="btnback"><i class="fa fa-angle-left" aria-hidden="true"></i>Return to previous page</button>
+    </div>
+    <div class="cv">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="">
+                    <p>Send by:</p>
+                    <a>
+
+                    </a>
+                    <input id="tel" type="checkbox" class="disabled not-allowed" @onclick="(() => HandleSendType(SendType.Telegram))" checked="@(selectedSendTypes.Contains(SendType.Telegram)?"checked":null)">
+                    <label for="tel" class="font-lable p-left disabled">@SendType.Telegram.GetEnumDescription()</label>
+                    <input id="wt" type="checkbox" class="disabled not-allowed" @onclick="(() => HandleSendType(SendType.Whatsapp))" checked="@(selectedSendTypes.Contains(SendType.Whatsapp)?"checked":null)">
+                    <label for="wt" class="font-lable p-left disabled">@SendType.Whatsapp.GetEnumDescription()</label>
+                    <input id="email" type="checkbox" class="" @onclick="(() => HandleSendType(SendType.Email))" checked="@(selectedSendTypes.Contains(SendType.Email)?"checked":null)">
+                    <label for="email" class="font-lable p-left">@SendType.Email.GetEnumDescription()</label>
+                    <div>
+                        <button @onclick="(() => HandleRequestClicked())" disabled="@(!selectedSendTypes.Any())" class="btnforme">Send request<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

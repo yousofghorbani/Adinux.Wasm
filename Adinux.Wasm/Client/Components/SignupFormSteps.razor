@@ -1,0 +1,21 @@
+﻿@using Adinux.Wasm.Client.Enums
+<div class="MenuTopMain">
+    <div class="item @(CurrentFormStep == UserIdentityFormStep.SignUp? "active":"")">
+        <span>1- Identity information </span>
+        <div class="LineItem"></div>
+    </div>
+    <div class="item @(CurrentFormStep == UserIdentityFormStep.Services? "active":"")">
+        <span>2- Select service</span>
+        <div class="LineItem"></div>
+    </div>
+    <div class="item @(CurrentFormStep == UserIdentityFormStep.Final? "active":"")">
+        <span>3- Send request</span>
+        <div class="LineItem"></div>
+    </div>
+</div>
+
+@code{
+
+    [Parameter]
+    public UserIdentityFormStep CurrentFormStep { get; set; }
+}

@@ -1,0 +1,139 @@
+﻿@using Adinux.Wasm.Shared.Enums
+@using Adinux.Wasm.Shared.Extensions
+
+@if (showSharingOptions)
+{
+
+    <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+        Please select a shipping method
+        <label class=" block text-xs font-normal text-gray-500 dark:text-gray-300">@($"{selectedCatalogues.Count} catalogs will be sent to you")</label>
+    </h3>
+    <ul class="flex justify-center gap-2">
+        <li>
+            <input @onclick="(() => HandleSendType(SendType.Whatsapp))" type="checkbox" id="react-option" value="" class="hidden peer" required="">
+            <label for="react-option" class="@(selectedSendTypes.Contains(SendType.Whatsapp) ? "border-blue-600":"border-gray-200") inline-flex justify-between items-center p-5 text-gray-500 bg-white rounded-lg border-2 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <div class="grid place-items-center">
+                    <svg class="mb-2 w-7 h-7 text-sky-500" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" />
+                    </svg>
+                    <div class="w-full text-lg font-semibold">@SendType.Whatsapp.GetEnumDescription()</div>
+                </div>
+            </label>
+        </li>
+        <li>
+            <input @onclick="(() => HandleSendType(SendType.Telegram))" type="checkbox" id="flowbite-option" value="" class="hidden peer">
+            <label for="flowbite-option" class="@(selectedSendTypes.Contains(SendType.Telegram) ? "border-blue-600":"border-gray-200") inline-flex justify-between items-center p-5 text-gray-500 bg-white rounded-lg border-2 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <div class="grid place-items-center">
+                    <svg class="mb-2 w-7 h-7 text-sky-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
+                        <path d="M 25 2 C 12.309288 2 2 12.309297 2 25 C 2 37.690703 12.309288 48 25 48 C 37.690712 48 48 37.690703 48 25 C 48 12.309297 37.690712 2 25 2 z M 25 4 C 36.609833 4 46 13.390175 46 25 C 46 36.609825 36.609833 46 25 46 C 13.390167 46 4 36.609825 4 25 C 4 13.390175 13.390167 4 25 4 z M 34.087891 14.035156 C 33.403891 14.035156 32.635328 14.193578 31.736328 14.517578 C 30.340328 15.020578 13.920734 21.992156 12.052734 22.785156 C 10.984734 23.239156 8.9960938 24.083656 8.9960938 26.097656 C 8.9960938 27.432656 9.7783594 28.3875 11.318359 28.9375 C 12.146359 29.2325 14.112906 29.828578 15.253906 30.142578 C 15.737906 30.275578 16.25225 30.34375 16.78125 30.34375 C 17.81625 30.34375 18.857828 30.085859 19.673828 29.630859 C 19.666828 29.798859 19.671406 29.968672 19.691406 30.138672 C 19.814406 31.188672 20.461875 32.17625 21.421875 32.78125 C 22.049875 33.17725 27.179312 36.614156 27.945312 37.160156 C 29.021313 37.929156 30.210813 38.335938 31.382812 38.335938 C 33.622813 38.335938 34.374328 36.023109 34.736328 34.912109 C 35.261328 33.299109 37.227219 20.182141 37.449219 17.869141 C 37.600219 16.284141 36.939641 14.978953 35.681641 14.376953 C 35.210641 14.149953 34.672891 14.035156 34.087891 14.035156 z M 34.087891 16.035156 C 34.362891 16.035156 34.608406 16.080641 34.816406 16.181641 C 35.289406 16.408641 35.530031 16.914688 35.457031 17.679688 C 35.215031 20.202687 33.253938 33.008969 32.835938 34.292969 C 32.477938 35.390969 32.100813 36.335938 31.382812 36.335938 C 30.664813 36.335938 29.880422 36.08425 29.107422 35.53125 C 28.334422 34.97925 23.201281 31.536891 22.488281 31.087891 C 21.863281 30.693891 21.201813 29.711719 22.132812 28.761719 C 22.899812 27.979719 28.717844 22.332938 29.214844 21.835938 C 29.584844 21.464938 29.411828 21.017578 29.048828 21.017578 C 28.923828 21.017578 28.774141 21.070266 28.619141 21.197266 C 28.011141 21.694266 19.534781 27.366266 18.800781 27.822266 C 18.314781 28.124266 17.56225 28.341797 16.78125 28.341797 C 16.44825 28.341797 16.111109 28.301891 15.787109 28.212891 C 14.659109 27.901891 12.750187 27.322734 11.992188 27.052734 C 11.263188 26.792734 10.998047 26.543656 10.998047 26.097656 C 10.998047 25.463656 11.892938 25.026 12.835938 24.625 C 13.831938 24.202 31.066062 16.883437 32.414062 16.398438 C 33.038062 16.172438 33.608891 16.035156 34.087891 16.035156 z"></path>
+                    </svg>
+                    <div class="w-full text-lg font-semibold">@SendType.Telegram.GetEnumDescription()</div>
+                </div>
+            </label>
+        </li>
+        <li>
+            <input @onclick="(() => HandleSendType(SendType.Email))" type="checkbox" id="angular-option" value="" class="hidden peer">
+            <label for="angular-option" class="@(selectedSendTypes.Contains(SendType.Email) ? "border-blue-600":"border-gray-200") inline-flex justify-between items-center p-5 text-gray-500 bg-white rounded-lg border-2 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <div class="grid place-items-center">
+                    <svg class="mb-2 w-7 h-7 text-blue-600" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+                    </svg>
+                    <div class="w-full text-lg font-semibold">@SendType.Email.GetEnumDescription()</div>
+                </div>
+            </label>
+        </li>
+    </ul>
+
+}
+else
+{
+
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+
+            @foreach (var catalogue in catalogues)
+            {
+                <li class="mr-2" role="presentation">
+                    <button @onclick="(() => selectedcCatalogueTab = catalogue.Category)"
+                    class="@(selectedcCatalogueTab == catalogue.Category? "border-blue-600 text-blue-600":"text-gray-500 hover:text-gray-300 hover:border-gray-300") border-b-2  inline-block p-4 rounded-t-lg hover:text-gray-600 dark:text-blue-500 dark:hover:text-blue-500  dark:border-blue-500"
+                    id="@catalogue.Category.Replace(" ","-")-tab" type="button" role="tab">
+                        @catalogue.Category
+                    </button>
+                </li>
+            }
+        </ul>
+    </div>
+    <div id="myTabContent">
+        @foreach (var catalogue1 in catalogues)
+        {
+            <div class="@(selectedcCatalogueTab == catalogue1.Category? "": "hidden") p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="@catalogue1.Category.Replace(" ","-")" role="tabpanel" aria-labelledby="@catalogue1.Category.Replace(" ","-")-tab">
+                @foreach (var catType in catalogue1.CatTypes)
+                {
+                    <div class="flex flex-col gap-2 mb-2">
+                        <div class="flex">
+                            <div class="flex items-center h-5">
+                                <input indeterminate="@(selectedCatalogues.Any(s => catType.Types.Select(c => c.Name).Contains(s.Name))? true:false)" checked="@(selectedCatalogues.Any(s => s.Name ==catType.Name)?"checked":null)"
+                           @onchange='(() => HandleOnCheckboxChange(catType))' aria-describedby="helper-checkbox-text" type="checkbox" value=""
+                           class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="helper-checkbox" class="font-medium text-gray-900 dark:text-gray-300">@catType.Name</label>
+                                <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300">@catType.Desc</p>
+                            </div>
+                            @if (catType.Types.Any())
+                            {
+                                //arrow down
+                                <svg class="w-4 h-4 cursor-pointer @(catType.IsOpen? "hidden": "")" @onclick="(() => catType.IsOpen = !catType.IsOpen)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+
+                            //arrow up
+                                <svg class="w-4 h-4 cursor-pointer @(catType.IsOpen? "": "hidden")" @onclick="(() => catType.IsOpen = !catType.IsOpen)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                </svg>
+
+
+                            }
+                        </div>
+                        @if (catType.Types.Any() && catType.IsOpen)
+                        {
+                            <div class="flex ml-4 gap-2">
+                                @foreach (var type in catType.Types)
+                                {
+                                    <div class="flex">
+                                        <div class="flex items-center h-5">
+                                            <input checked="@(selectedCatalogues.Any(s => s.Name == type.Name)?"checked":null)"
+                               @onchange='(() => HandleOnCheckboxChange(type))' aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        </div>
+                                        <div class="ml-2 text-sm">
+                                            <label for="helper-checkbox" class="font-medium text-gray-900 dark:text-gray-300">@type.Name</label>
+                                            <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300">@type.Desc</p>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        }
+                    </div>
+
+
+                }
+            </div>
+        }
+
+    </div>
+}
+<div class="flex gap-2">
+<button @onclick="(() => HandleCataloguesRequestClicked())"
+        type="button"
+        disabled="@(!selectedSendTypes.Any())" class="@(showSharingOptions?"w-full":"hidden") text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      Send
+</button>
+
+<button @onclick="(() => showSharingOptions = !showSharingOptions)"
+        type="button"
+        disabled="@(!selectedCatalogues.Any())" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        @(showSharingOptions ? "Back" : "Choose how to send")
+</button>
+
+</div>

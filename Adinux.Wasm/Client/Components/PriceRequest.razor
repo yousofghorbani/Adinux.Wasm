@@ -1,0 +1,36 @@
+﻿<div class="contentMain">
+            <div class="HeaderMain">
+        <h2 class="headerTitle">Request a price quote</h2>
+        <button @onclick="(() => BackToSignUp.InvokeAsync(true))" class="btnback"><i class="fa fa-angle-left" aria-hidden="true"></i>Return to previous page</button>
+
+            </div>
+
+        <EditForm EditContext="_editContext" OnSubmit="HandleFormSubmit" class="space-y-6">
+            <DataAnnotationsValidator/>
+      <div class="forminput">
+          <div class="rowForm">
+              <InputText @bind-Value=PriceRequestForm.ProjectName class="inputValidate" placeholder="Project name " data-valid="empty" type="text"/>
+          </div>
+          <div class="rowForm w-41">
+                <InputText @bind-Value=PriceRequestForm.ProjectAddress class="inputValidate" placeholder="Project address " data-valid="empty" type="text" />
+          </div>
+
+
+          <div class="rowForm">
+              <input readonly value="@CurrentUserIdentityForm.Mobile" class="inputValidate" placeholder="Mobile number" data-valid="mobile" type="text">
+
+          </div>
+
+          <div class="rowForm ">
+              <textarea @bind=PriceRequestForm.Desc class="inputValidate" placeholder=" Description " data-valid="empty" type="text"></textarea>
+          </div>
+      </div>
+
+        <div class="">
+            <button type="submit" class="btnforme BtnValidate" data-toggle="modal" data-target="#myModal">Price request<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+
+        </div>
+        </EditForm>
+
+
+</div>

@@ -1,0 +1,42 @@
+﻿@page "/Expo-Form"
+@using Adinux.Wasm.Client.Enums
+
+<CascadingValue Value="@currentUserIdentityForm">
+    <section class="panel2">
+        <SignupFormRightPanel />
+        <div class="MainPanel">
+            <SignupFormSteps CurrentFormStep="currentIdentityFormStep" />
+            @if (currentIdentityFormStep == UserIdentityFormStep.SignUp)
+            {
+                <IdentityForm OnFormSubmitted="UserFormSubmitted" />
+            }
+            else if (currentIdentityFormStep == UserIdentityFormStep.Services)
+            {
+                
+                    <Services CurrentUserIdentityFormService="(service => {currentUserIdentityFormService = service;currentIdentityFormStep = UserIdentityFormStep.Final;})"
+                      BackToSignUp="(() => {currentIdentityFormStep = UserIdentityFormStep.SignUp; currentUserIdentityFormService = UserIdentityFormService.ChooseOption;})" />
+                
+            }
+            else if (currentUserIdentityFormService == UserIdentityFormService.PriceRequest)
+            {
+                <PriceRequest
+                    BackToSignUp="(() => {currentIdentityFormStep = UserIdentityFormStep.Services; currentUserIdentityFormService = UserIdentityFormService.ChooseOption;})" />
+            }  
+            else if (currentUserIdentityFormService == UserIdentityFormService.CatalogueRequest)
+            {
+                <CatalogueRequest
+                    BackToSignUp="(() => {currentIdentityFormStep = UserIdentityFormStep.Services; currentUserIdentityFormService = UserIdentityFormService.ChooseOption;})" />
+            }
+            else if (currentUserIdentityFormService == UserIdentityFormService.RepresentationRequest)
+            {
+                <RepresentationRequest
+                    BackToSignUp="(() => {currentIdentityFormStep = UserIdentityFormStep.Services; currentUserIdentityFormService = UserIdentityFormService.ChooseOption;})" />
+            }
+            else if (currentUserIdentityFormService == UserIdentityFormService.ResumeRequest)
+            {
+                <ResumeRequest
+                    BackToSignUp="(() => {currentIdentityFormStep = UserIdentityFormStep.Services; currentUserIdentityFormService = UserIdentityFormService.ChooseOption;})" />
+            }
+        </div>
+    </section>
+</CascadingValue>

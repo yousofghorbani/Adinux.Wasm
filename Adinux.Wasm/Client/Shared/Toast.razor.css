@@ -1,0 +1,47 @@
+﻿.visible {
+    position: absolute;
+    bottom: 0rem;
+    right: 1.25rem;
+}
+
+.toast {
+    color: #6b7280;
+    z-index: 50;
+    align-items: center;
+    padding: 1rem; /* 16px */
+    margin-left: 1rem; /* 16px */
+    width: 100%;
+    max-width: 20rem; /* 320px */
+    border-radius: 0.5rem; /* 8px */
+    border-right-width: 0px;
+    border-left-width: 1px;
+    border-color: rgb(229 231 235);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+.toast-svg {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem; /* 20px */
+    color: rgb(37 99 235);
+}
+.toast-text {
+    padding-left: 1rem; /* 16px */
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.75rem; /* 28px */
+    font-weight: 400;
+}
+
+.bg-blue-200 {
+    background-color: #bfdbfe;
+}
+
+.bg-green-200 {
+    background-color: #bbf7d0;
+}
+
+.bg-orange-200 {
+    background-color: #fed7aa;
+}
+
+.bg-red-200 {
+    background-color: #fecaca;
+}
