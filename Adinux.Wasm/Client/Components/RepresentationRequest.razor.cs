@@ -25,7 +25,7 @@ namespace Adinux.Wasm.Client.Components
         public IJSRuntime _jSRuntime { get; set; }
 
         string selectedpProvince;
-        string selectedpCity;
+        string selectedpCity = " ";
         RepresentationServiceType selectedRepresentationServiceType = RepresentationServiceType.Sell;
         RepresentationPersonType selectedRepresentationPersonType = RepresentationPersonType.RealCharacter;
 

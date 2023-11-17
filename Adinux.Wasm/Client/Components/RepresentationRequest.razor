@@ -1,6 +1,10 @@
 ﻿@using Adinux.Wasm.Shared.Enums
 @using Adinux.Wasm.Shared.Extensions
 @using DNTPersianUtils.Core.IranCities
+@using Adinux.Wasm.Shared.ViewModel
+@{
+    Canada canada = new Canada();
+}
 
 <div class="contentMain">
     <div class="HeaderMain">
@@ -39,15 +43,16 @@
             <div class="rowForm">
                 <select @bind="selectedpProvince" data-valid="empty" class=" inputValidate">
                 <option value="">Please select the province</option>
-                    @foreach (var province in Iran.Provinces)
+                    @foreach (var province in canada.Provinces)
                     {
-                        <option value="@province.ProvinceName">@province.ProvinceName</option>
+                        @* <option value="@province.ProvinceName">@province.ProvinceName</option> *@
+                        <option value="@province">@province</option>
 
                     }
                 </select>
             </div>
 
-            <div class="rowForm">
+            @* <div class="rowForm hidden">
                 <select @bind="selectedpCity" data-valid="empty" class=" inputValidate @(string.IsNullOrEmpty(selectedpProvince)? "disabled":"")">
                 <option value="">Please select the city</option>
                     @if (!string.IsNullOrEmpty(selectedpProvince))
@@ -63,13 +68,13 @@
                             }
 
                         }
-
+                <option value="Totonto">Totonto</option>
                     }
                 </select>
-            </div>
+            </div> *@
 
             <div class="clearfix">
-            <button @onclick="(() => HandleRequestClicked())" disabled="@(string.IsNullOrEmpty(selectedpCity))" class="btnforme BtnValidate" data-toggle="modal" data-target="#myModal">Representation request<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            <button @onclick="(() => HandleRequestClicked())" disabled="@(string.IsNullOrEmpty(selectedpProvince))" class="btnforme BtnValidate" data-toggle="modal" data-target="#myModal">Representation request<i class="fa fa-angle-right" aria-hidden="true"></i></button>
 
             </div>
         
