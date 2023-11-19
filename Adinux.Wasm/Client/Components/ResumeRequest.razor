@@ -14,10 +14,10 @@
                     <a>
 
                     </a>
-                    <input id="tel" type="checkbox" class="disabled not-allowed" @onclick="(() => HandleSendType(SendType.Telegram))" checked="@(selectedSendTypes.Contains(SendType.Telegram)?"checked":null)">
-                    <label for="tel" class="font-lable p-left disabled">@SendType.Telegram.GetEnumDescription()</label>
-                    <input id="wt" type="checkbox" class="disabled not-allowed" @onclick="(() => HandleSendType(SendType.Whatsapp))" checked="@(selectedSendTypes.Contains(SendType.Whatsapp)?"checked":null)">
-                    <label for="wt" class="font-lable p-left disabled">@SendType.Whatsapp.GetEnumDescription()</label>
+                    <input id="tel" type="checkbox" class="" @onclick="(() => HandleSendType(SendType.Telegram))" checked="@(selectedSendTypes.Contains(SendType.Telegram)?"checked":null)">
+                    <label for="tel" class="font-lable p-left">@SendType.Telegram.GetEnumDescription()</label>
+                    <input id="wt" type="checkbox" class="" @onclick="(() => HandleSendType(SendType.Whatsapp))" checked="@(selectedSendTypes.Contains(SendType.Whatsapp)?"checked":null)">
+                    <label for="wt" class="font-lable p-left">@SendType.Whatsapp.GetEnumDescription()</label>
                     <input id="email" type="checkbox" class="" @onclick="(() => HandleSendType(SendType.Email))" checked="@(selectedSendTypes.Contains(SendType.Email)?"checked":null)">
                     <label for="email" class="font-lable p-left">@SendType.Email.GetEnumDescription()</label>
                     <div>

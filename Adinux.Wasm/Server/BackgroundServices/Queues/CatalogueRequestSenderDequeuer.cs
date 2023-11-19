@@ -70,8 +70,8 @@ namespace Adinux.Wasm.Server.BackgroundServices.Queues
 
                                 if (catalogueRequest.CatalogueRequestSendTypes.Any(c => c.SendType == SendType.Telegram))
                                 {
-                                    var result = await _wTelegramService.SendCataloguesAsync(catalogueRequest.Mobile, catalogueRequest.FullName, catalogueRequest.SelectedCatalogues);
-                                    await UpdateEntityAsync(catalogueRequest, result,SendType.Telegram);
+                                    //var result = await _wTelegramService.SendCataloguesAsync(catalogueRequest.Mobile, catalogueRequest.FullName, catalogueRequest.SelectedCatalogues);
+                                    //await UpdateEntityAsync(catalogueRequest, result,SendType.Telegram);
 
                                 }
                                 //await  Task.Delay(2000);
